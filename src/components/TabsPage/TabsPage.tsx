@@ -1,14 +1,11 @@
-import React from 'react';
-import { Tab } from '../types/Tab';
+import { useContext } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import classNames from 'classnames';
+import { TabsContext } from '../../context/TabsProvider';
 
-interface Props {
-  tabs: Tab[];
-}
-
-export const TabsPage: React.FC<Props> = ({ tabs }) => {
+export const TabsPage = () => {
   const { tabId } = useParams();
+  const tabs = useContext(TabsContext);
 
   const selectedTab = tabs.find(tab => tab.id === tabId);
 

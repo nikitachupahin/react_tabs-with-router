@@ -2,17 +2,7 @@ import 'bulma/css/bulma.css';
 import '@fortawesome/fontawesome-free/css/all.css';
 import './App.scss';
 import { Navigation } from './components/Navigation';
-import { Navigate, Route, Routes } from 'react-router-dom';
-import { TabsPage } from './pages/TabsPage';
-import { HomePage } from './pages/HomePage';
-import { NotFoundPage } from './pages/NotFoundPage';
-import { Tab } from './types/Tab';
-
-const tabs: Tab[] = [
-  { id: 'tab-1', title: 'Tab 1', content: 'Some text 1' },
-  { id: 'tab-2', title: 'Tab 2', content: 'Some text 2' },
-  { id: 'tab-3', title: 'Tab 3', content: 'Some text 3' },
-];
+import { Outlet } from 'react-router-dom';
 
 export const App = () => (
   <>
@@ -20,15 +10,7 @@ export const App = () => (
 
     <div className="section">
       <div className="container">
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/home" element={<Navigate to="/" replace />} />
-          <Route path="tabs">
-            <Route index element={<TabsPage tabs={tabs} />} />
-            <Route path=":tabId" element={<TabsPage tabs={tabs} />} />
-          </Route>
-          <Route path="*" element={<NotFoundPage />} />
-        </Routes>
+        <Outlet />
       </div>
     </div>
   </>
