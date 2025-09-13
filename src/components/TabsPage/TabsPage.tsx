@@ -18,7 +18,7 @@ export const TabsPage = () => {
             <li
               key={tab.id}
               data-cy="Tab"
-              className={classNames('', {
+              className={classNames({
                 'is-active': tab.id === selectedTab?.id,
               })}
             >

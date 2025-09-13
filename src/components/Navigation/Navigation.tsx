@@ -4,6 +4,9 @@ import { Link, useLocation } from 'react-router-dom';
 export const Navigation = () => {
   const location = useLocation();
 
+  const isHomeActive = location.pathname === '/';
+  const isTabsActive = location.pathname.startsWith('/tabs');
+
   return (
     <nav
       className="navbar is-light is-fixed-top is-mobile has-shadow"
@@ -11,22 +14,21 @@ export const Navigation = () => {
     >
       <div className="container">
         <div className="navbar-brand">
-          <Link
-            to="/"
+          <div
             className={classNames('navbar-item', {
-              'is-active': location.pathname === '/',
+              'is-active': isHomeActive,
             })}
           >
-            Home
-          </Link>
-          <Link
-            to="/tabs"
+            <Link to="/">Home</Link>
+          </div>
+
+          <div
             className={classNames('navbar-item', {
-              'is-active': location.pathname.startsWith('/tabs'),
+              'is-active': isTabsActive,
             })}
           >
-            Tabs
-          </Link>
+            <Link to="/tabs">Tabs</Link>
+          </div>
         </div>
       </div>
     </nav>
